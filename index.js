@@ -5,7 +5,7 @@ const app = express();
 const dotenv = require('dotenv').config();
 
 app.get('/', (request, response) => {
-    response.send("hello node");
+    response.send("hello nodemon232");
 });
 
 app.listen(process.env.PORT, () => console.log(`Node is avalable on port ${process.env.PORT}.`));
