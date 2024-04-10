@@ -1,6 +1,9 @@
 import Role from '../models/Role.js';
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
+import { SuccessMessage } from '../utils/http-responses/success.js';
+import { ErrorMessage } from '../utils/http-responses/error.js';
+
 
 
 export const register = async (req, res, next) => {
@@ -17,9 +20,9 @@ export const register = async (req, res, next) => {
             roles: role
         });
         await newUser.save();
-        return res.status(200).send("User registered.");
+        return next(SuccessMessage(200, "User registered."));
     } catch (error) {
-        next(error); // Pass the error to the next middleware function
+        return next(ErrorMessage(500, "Internal Server Error.", error.stack)); // Pass the error to the next middleware function
     }
 };
 
@@ -28,14 +31,14 @@ export const login = async (req, res, next) => {
     try {
         const user = await User.findOne({email: req.body.email});
         if(!user){
-            return res.status(404).send("User not found!");
+            return next(ErrorMessage(404, "User not found.")); // Pass the error to the next middleware function
         }
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
         if(!isPasswordCorrect){
-            return res.status(404).send("Wrong password!");
+            return next(ErrorMessage(404, "Wrong password.")); // Pass the error to the next middleware function
         }
-        return res.status(200).send("Login successful!");
+        return next(SuccessMessage(200, "Login successful.", { "user": user.userName}));
     } catch (error) {
-        next(error); // Pass the error to the next middleware function
+        return next(ErrorMessage(500, "Internal Server Error.", error.stack)); // Pass the error to the next middleware function
     }
 };
