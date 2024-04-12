@@ -1,8 +1,9 @@
-export const SuccessMessage = (status, message, data) => {
+export const SuccessMessage = (status, message, data, cookies) => {
     const succ = {
         status: status,
         message: message,
-        data: data
+        data: data,
+        cookies: cookies
     }
     return succ;
 }

@@ -46,7 +46,7 @@ export const login = async (req, res, next) => {
             },
             process.env.JWT_SECRET
         );
-        return next(SuccessMessage(200, "Login successful.", { "user": user, "token": token}));
+        return next(SuccessMessage(200, "Login successful.", { "user": user}, {"token": token}));
     } catch (error) {
         return next(ErrorMessage(500, "Internal Server Error.", error.stack)); // Pass the error to the next middleware function
     }

@@ -43,6 +43,11 @@ app.use((obj, req, res, next) => {
     else if(obj.data){
         response.data = obj.data;
     }
+    if(obj.cookies){
+        for (let [key, value] of Object.entries(obj.cookies)) {
+            res.cookie(key, value);
+        }
+    }
     return res.status(status).json(response);
 });
 
