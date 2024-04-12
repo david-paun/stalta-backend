@@ -51,3 +51,7 @@ export const login = async (req, res, next) => {
         return next(ErrorMessage(500, "Internal Server Error.", error.stack)); // Pass the error to the next middleware function
     }
 };
+
+export const elevateUser = async (req, res, next) => {
+    //implement privilege escalation only if it is requested by an admin, the user provided has to exist and not be a guest
+};
