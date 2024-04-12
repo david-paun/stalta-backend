@@ -29,14 +29,14 @@ const UserSchema = mongoose.Schema(
             required: false,
             default: "/utils/images/default-profile.jpg"
         },
-        isAdmin: {
-            type: Boolean,
-            default: false
-        },
-        roles: {
-            type: [Schema.Types.ObjectId],
+        clearanceLevel: {
+            type: Schema.Types.ObjectId,
             required: true,
-            ref: "Role"
+            ref: "ClearanceLevel"
+        },
+        additionalRoles: {
+            type: [Schema.Types.ObjectId],
+            ref: "AdditionalRole"
         }
     },
     {

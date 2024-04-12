@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-import roleRoute from './routes/role.js';
+import clearanceLevelRoute from './routes/clearanceLevel.js';
 import authRoute from './routes/auth.js';
 import userRoute from './routes/user.js';
 import { CommandSucceededEvent } from 'mongodb';
@@ -27,7 +27,7 @@ app.get('/', (request, response) => {
     response.send("hello from esm module!");
 });
 
-app.use("/api/role", roleRoute);
+app.use("/api/clearanceLevel", clearanceLevelRoute);
 
 app.use("/api/auth", authRoute);
 

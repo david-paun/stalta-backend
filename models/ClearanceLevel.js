@@ -2,7 +2,7 @@ import mongoose, { mongo } from "mongoose";
 
 const RoleSchema = mongoose.Schema(
     {
-        role:{
+        level:{
             type: String,
             required: true
         }
@@ -12,4 +12,4 @@ const RoleSchema = mongoose.Schema(
     }
 );
 
-export default mongoose.model("Role", RoleSchema);
+export default mongoose.model("ClearanceLevel", RoleSchema);
