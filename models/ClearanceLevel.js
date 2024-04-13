@@ -4,7 +4,8 @@ const RoleSchema = mongoose.Schema(
     {
         level:{
             type: String,
-            required: true
+            required: true,
+            unique: true
         }
     },
     {

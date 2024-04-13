@@ -36,7 +36,8 @@ const UserSchema = mongoose.Schema(
         },
         additionalRoles: {
             type: [Schema.Types.ObjectId],
-            ref: "AdditionalRole"
+            ref: "AdditionalRole",
+            default: []
         }
     },
     {
