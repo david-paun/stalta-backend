@@ -70,21 +70,41 @@ export const elevateUser = async (req, res, next) => {
                 return next(ErrorMessage(404, "User not found."));
             }
 
-            //if it tries to assign smth to himself error
+            let requesterData;
+
+            jwt.verify(req.cookies.token, process.env.JWT_SECRET, (err, userData)=> {
+                if(err){
+                    return next(ErrorMessage(403, "Invalid token."));
+                }
+                requesterData = userData;
+            });
+
+            console.log("requesterData: ", requesterData.id, userId);
+
+            if(requesterData.id===userId){
+                return next(ErrorMessage(403, "You can not elevate your own privileges.")); 
+            }
+
+            
 
             let isAdmin = await hasAdminClearance(user);
             if(isAdmin){
                 return next(ErrorMessage(403, "User is already admin.")); 
             }
-            else{
-                console.log(req.cookies.token);
-                return next(SuccessMessage(200, "User is elevated to admin.")); 
 
-                //if request sender is admin himself success
+            const adminClearanceLevel = await ClearanceLevel.findOne({level: 'Admin'});
 
-                //else error
-                //only admins can assign other admins
-            }
+            const newUserState = await User.findByIdAndUpdate(
+                userId,
+                {$set: {"clearanceLevel": adminClearanceLevel._id}},
+                {new: true}
+            );
+
+
+
+            return next(SuccessMessage(200, "User is elevated to admin.", {"user": newUserState})); 
+
+
         } catch (error) {
             return next(ErrorMessage(500, "Internal Server Error.", error.stack));
         }

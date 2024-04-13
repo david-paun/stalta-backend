@@ -11,7 +11,6 @@ export const verifyToken = (req, res, next) => {
         if(err){
             return next(ErrorMessage(403, "Invalid token."));
         }
-        console.log("userData: ", userData);
         req.userData = userData;
         next();
     });
