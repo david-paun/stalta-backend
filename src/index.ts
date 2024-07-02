@@ -43,10 +43,10 @@ app.use((obj, req, res, next) => {
         message: message
     };
     if(obj.stack) {
-        response.stack = obj.stack;
+        //response.stack = obj.stack;
     }
     else if(obj.data){
-        response.data = obj.data;
+        //response.data = obj.data;
     }
     if(obj.cookies){
         for (let [key, value] of Object.entries(obj.cookies)) {

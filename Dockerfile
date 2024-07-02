@@ -8,12 +8,11 @@ RUN npm ci
 
 COPY . .
 
-#ENTRYPOINT ["nodemon", "/usr/src/app/server.js"]
+RUN rm -rf dist
 
-#VOLUME /usr/src/app
+RUN chmod +x src/utils/bash/copy-js-files.js
+
+# RUN mkdir dist && cp -R src/**/*.js dist/
 
 CMD ["npm", "run", "dev"]
 
-# for testing purposes:
-# docker build -t my_nodejs_image .
-# docker run -d --name my_nodejs_container -p 3000:3000 my_nodejs_image
