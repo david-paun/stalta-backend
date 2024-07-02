@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 import clearanceLevelRoute from './routes/clearanceLevel.js';
 import authRoute from './routes/auth.js';
-// import userRoute from './routes/user.js';
+import userRoute from './routes/user.js';
 import { CommandSucceededEvent } from 'mongodb';
 import cookieParser from 'cookie-parser';
 import { SuccessMessage } from './models/SuccessMessage.js';
@@ -43,7 +43,7 @@ app.use("/api/clearanceLevel", clearanceLevelRoute);
 
  app.use("/api/auth", authRoute);
 
-// app.use("/api/user", userRoute);
+app.use("/api/user", userRoute);
 
 app.use((obj:SuccessMessage|ErrorMessage, req: Request, res: Response, next: NextFunction) => {
     const status = obj.status || 500;
