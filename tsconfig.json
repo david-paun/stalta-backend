@@ -5,7 +5,7 @@
       "target": "ES2020",               /* Specify module system */
       "outDir": "./dist",                  /* Specify output directory for compiled JavaScript files */
       "rootDir": "./src",                  /* Specify source directory for TypeScript files */
-      "strict": false,                      /* Enable all strict type-checking options */
+      "strict": true,                      /* Enable all strict type-checking options */
       "esModuleInterop": true,             /* Emit additional JavaScript to ease interoperability */
       "skipLibCheck": true,                /* Skip type checking of declaration files */
       "forceConsistentCasingInFileNames": true /* Ensure consistent casing of file names on disk */

@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction, Router } from 'express';
 import {createClearanceLevel, deleteClearanceLevel, getClearanceLevels, updateClearanceLevel} from "../controllers/clearanceLevel.controller.js";
 
 const router = express.Router();
