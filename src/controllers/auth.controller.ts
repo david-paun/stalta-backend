@@ -13,7 +13,6 @@ export const register = async (req: Request, res: Response, next: NextFunction):
     try {
         const clearanceLevel = await ClearanceLevel.findOne({level: 'User'});
         if(!clearanceLevel){
-            console.log("aaa");
             return next(errorMessage(500, "Clearance level USER does not exist."));
         }
         const salt = await bcrypt.genSalt(10);
