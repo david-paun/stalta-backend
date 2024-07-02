@@ -20,8 +20,8 @@ interface User extends Document {
     email: string;
     password: string;
     profileImage?: string;
-    clearanceLevel: Schema.Types.ObjectId | ClearanceLevel;
-    additionalRoles: Array<Schema.Types.ObjectId | AdditionalRole>;
+    clearanceLevel: Schema.Types.ObjectId;
+    additionalRoles: Array<Schema.Types.ObjectId>;
     createdAt: Date;
     updatedAt: Date;
 }
