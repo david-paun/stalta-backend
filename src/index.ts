@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
 import clearanceLevelRoute from './routes/clearanceLevel.js';
-// import authRoute from './routes/auth.js';
+import authRoute from './routes/auth.js';
 // import userRoute from './routes/user.js';
 import { CommandSucceededEvent } from 'mongodb';
 import cookieParser from 'cookie-parser';
@@ -35,13 +35,13 @@ const mongoDbAuth = async (): Promise<void> => {
 export default mongoDbAuth;
 
 
-app.get('/', (request, response) => {
+app.get('/', (_request, response) => {
     response.send("hello from esm module!");
 });
 
 app.use("/api/clearanceLevel", clearanceLevelRoute);
 
-// app.use("/api/auth", authRoute);
+ app.use("/api/auth", authRoute);
 
 // app.use("/api/user", userRoute);
 
@@ -49,17 +49,17 @@ app.use((obj:SuccessMessage|ErrorMessage, req: Request, res: Response, next: Nex
     const status = obj.status || 500;
     const message = obj.message || "Internal Server Error.";
     const success = [200, 201, 204].includes(status);
-    const response = {
+    const response:any = {
         success: success,
         status: status,
         message: message
     };
     if(obj instanceof ErrorMessage && obj.stack) {
-        //response.stack = obj.stack;
+        response.stack = obj.stack;
     }
     else if(obj instanceof SuccessMessage){
     if(obj.data){
-        //response.data = obj.data;
+        response.data = obj.data;
     }
     if(obj.cookies){
         for (let [key, value] of Object.entries(obj.cookies)) {
