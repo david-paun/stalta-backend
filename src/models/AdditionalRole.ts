@@ -1,13 +1,15 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose, { mongo } from 'mongoose';
 
-const RoleSchema = new mongoose.Schema({
+const RoleSchema = new mongoose.Schema(
+  {
     role: {
-        type: String,
-        required: true
-    }
-},
-    {
-        timestamps: true
-    });
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-export default mongoose.model("AdditionalRole", RoleSchema);
+export default mongoose.model('AdditionalRole', RoleSchema);

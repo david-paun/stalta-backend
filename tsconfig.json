@@ -1,22 +1,19 @@
 {
-    "compilerOptions": {
-      "module": "NodeNext",
-      "moduleResolution": "NodeNext",
-      "target": "ES2020",               /* Specify module system */
-      "outDir": "./dist",                  /* Specify output directory for compiled JavaScript files */
-      "rootDir": "./src",                  /* Specify source directory for TypeScript files */
-      "strict": true,                      /* Enable all strict type-checking options */
-      "esModuleInterop": true,             /* Emit additional JavaScript to ease interoperability */
-      "skipLibCheck": true,                /* Skip type checking of declaration files */
-      "forceConsistentCasingInFileNames": true, /* Ensure consistent casing of file names on disk */
-      "incremental": true,
-      "tsBuildInfoFile": "./dist/.tsbuildinfo"
-    },
-    "include": [
-      "./src/**/*.ts"                       /* Include TypeScript files under src directory */
-    ],
-    "exclude": [
-      "./node_modules"                      /* Exclude node_modules directory */
-    ]
-  }
-  
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2020" /* Specify module system */,
+    "outDir": "./dist" /* Specify output directory for compiled JavaScript files */,
+    "rootDir": "./src" /* Specify source directory for TypeScript files */,
+    "strict": true /* Enable all strict type-checking options */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease interoperability */,
+    "skipLibCheck": true /* Skip type checking of declaration files */,
+    "forceConsistentCasingInFileNames": true /* Ensure consistent casing of file names on disk */,
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo"
+  },
+  "include": [
+    "./src/**/*.ts" /* Include TypeScript files under src directory */
+  ],
+  "exclude": ["./node_modules" /* Exclude node_modules directory */]
+}
