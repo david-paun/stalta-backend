@@ -10,7 +10,7 @@ COPY . .
 
 RUN rm -rf dist
 
-RUN chmod +x src/utils/bash/copy-js-files.js
+RUN chmod +x src/utils/bash/copy-js-files.sh
 
 # RUN mkdir dist && cp -R src/**/*.js dist/
 
